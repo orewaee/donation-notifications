@@ -1,0 +1,22 @@
+{
+    "include": ["src"],
+    "exclude": ["node_modules"],
+    "compilerOptions": {
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+
+        "outDir": "dist",
+        "removeComments": true,
+        "sourceMap": false,
+
+        "esModuleInterop": true,
+
+        "target": "ESNext",
+
+        "skipLibCheck": true
+    }
+}
