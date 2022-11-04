@@ -1,6 +1,8 @@
 import "dotenv/config";
 import io from "socket.io-client";
-import {EmbedBuilder, WebhookClient} from "discord.js";
+import {WebhookClient} from "discord.js";
+import sendMessage from "./utils/sendMessage";
+import {Donation} from "./types";
 
 async function launch() {
     try {
@@ -41,36 +43,9 @@ async function launch() {
         donationalerts.off("donation").on("donation", async function (donation) {
             donation = JSON.parse(donation);
 
-            const embed = new EmbedBuilder()
-                .setTitle("New donation")
-                .addFields(
-                    {
-                        name: "Id",
-                        value: `${donation.id}`
-                    },
-                    {
-                        name: "Username",
-                        value: `${donation.username}`
-                    },
-                    {
-                        name: "Message",
-                        value: `${donation.message}` || "_Missing_"
-                    },
-                    {
-                        name: "Amount",
-                        value: `${donation.amount} ${donation.currency}`
-                    }
-                )
-                .setColor("#7161EF");
-
             console.log("New donation", donation);
 
-            await webhookClient.send({
-                content: `<@!${process.env.ID}>`,
-                embeds: [
-                    embed
-                ]
-            })
+            await sendMessage(webhookClient, donation);
         });
     } catch (e) {
         console.error(e);
