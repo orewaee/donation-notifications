@@ -1,5 +1,5 @@
 # donation-notifications
-A small application that sends a message about a new donation from DonationAlerts to Discord
+A small application that sends a message about a new donation from [DonationAlerts](https://www.donationalerts.com/) to [Discord](https://discord.com/)
 
 ### How to start
 1. First you need to clone the repository. To do this, use the command `git clone https://github.com/orewaee/donation-notifications.git`
